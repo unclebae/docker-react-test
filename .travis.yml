@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t unclebae/docker-react-test -f Dckerfile.dev .
+
+script:
+  - docker run -e CI=true USERNAME/docker-react-test npm run test -- --coverage
